@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import WeatherForm from './Form';
 import Weather from './WeatherComponent';
-
+import {Spinner} from 'react-bootstrap';
 
 class App extends React.Component {
 
@@ -19,6 +19,7 @@ class App extends React.Component {
       today: '',
       last_update: '',
       icon: '',
+      loading:false,
     }
   }
 
@@ -39,6 +40,9 @@ class App extends React.Component {
   }
 
   get_weather = () => {
+    this.setState({
+      loading:true,
+    })
     let request = `https://dataservice.accuweather.com/currentconditions/v1/${this.state.location_key}?apikey=${this.state.api_key}&details=true HTTP/1.1`
     var today = new Date();
     var date = today.toDateString()
@@ -51,6 +55,7 @@ class App extends React.Component {
           icon = '0' + icon;
         }
         this.setState({
+          loading:false,
           weather: data[0],
           today: date,
           icon: icon,
@@ -134,9 +139,16 @@ class App extends React.Component {
           <WeatherForm get_location={this.get_location_cordinates} city={this.state.city} country={this.state.country}
             city_change={this.handleCityChange} country_change={this.handleCountryChange} get_location_by_form={this.get_location_by_form}
           />
+          
+          {this.state.loading && 
+            <div>
+            <Spinner animation="grow" variant="primary" /> <h1>Loading</h1>
+            </div>
+          }
           {this.state.city && this.state.country && this.state.weather &&
             <Weather today={this.state.today} icon={this.state.icon} last_update={this.state.last_update} city={this.state.city} country={this.state.country} get_weather={this.get_weather} weather={this.state.weather} />
           }
+          
         </div>
 
 
