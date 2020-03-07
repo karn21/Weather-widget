@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   get_weather = () => {
-    let request = `http://dataservice.accuweather.com/currentconditions/v1/${this.state.location_key}?apikey=${this.state.api_key}&details=true HTTP/1.1`
+    let request = `https://dataservice.accuweather.com/currentconditions/v1/${this.state.location_key}?apikey=${this.state.api_key}&details=true HTTP/1.1`
     var today = new Date();
     var date = today.toDateString()
     fetch(request)
@@ -60,7 +60,7 @@ class App extends React.Component {
   }
 
   get_location_by_form = () => {
-    let request = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.api_key}&q=${this.state.city}&details=false&offset=5 HTTP/1.1`;
+    let request = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${this.state.api_key}&q=${this.state.city}&details=false&offset=5 HTTP/1.1`;
     fetch(request)
       .then(res => res.json())
       .then(data => {
@@ -81,7 +81,7 @@ class App extends React.Component {
   }
 
   get_location = () => {
-    let request = `http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.state.api_key}&q=26.8%2C75.8&details=false&toplevel=true HTTP/1.1`
+    let request = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.state.api_key}&q=26.8%2C75.8&details=false&toplevel=true HTTP/1.1`
     fetch(request)
       .then(response => response.json())
       .then(data => {
