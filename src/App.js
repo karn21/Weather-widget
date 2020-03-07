@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      api_key: '7M6K7RmFyYed84uboNI0M2Pi1572tGTt',
+      api_key: 'GzPAmf3A4wwdRcRK1YxFWjD7B1DhFmkf',
       lat: '',
       lon: '',
       city: '',
@@ -86,7 +86,7 @@ class App extends React.Component {
   }
 
   get_location = () => {
-    let request = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.state.api_key}&q=26.8%2C75.8&details=false&toplevel=true HTTP/1.1`
+    let request = `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${this.state.api_key}&q=${this.state.lat},${this.state.lon}&details=false&toplevel=true HTTP/1.1`
     fetch(request)
       .then(response => response.json())
       .then(data => {
