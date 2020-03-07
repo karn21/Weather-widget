@@ -142,7 +142,7 @@ class App extends React.Component {
           
           {this.state.loading && 
             <div>
-            <Spinner animation="grow" variant="primary" /> <h1>Loading</h1>
+            <h3 className='mt-5'><Spinner animation="grow" variant="primary" /> Loading...</h3>
             </div>
           }
           {this.state.city && this.state.country && this.state.weather &&
