@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Weather Widget
 
+![Sample Image](https://github.com/karn21/Weather-widget/blob/master/screenshot.png)
+
+
  
 This is a simple weather app made using React.
 
